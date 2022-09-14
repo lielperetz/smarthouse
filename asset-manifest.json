@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/smarthouse/static/css/main.85eefe51.css",
+    "main.js": "/smarthouse/static/js/main.10a0ef68.js",
+    "static/js/787.fea5cc7c.chunk.js": "/smarthouse/static/js/787.fea5cc7c.chunk.js",
+    "static/media/bg.jpg": "/smarthouse/static/media/bg.9d66402d2d1a9647a6d5.jpg",
+    "static/media/Logo.png": "/smarthouse/static/media/Logo.8b0a8d96eeafeefc633f.png",
+    "index.html": "/smarthouse/index.html",
+    "main.85eefe51.css.map": "/smarthouse/static/css/main.85eefe51.css.map",
+    "main.10a0ef68.js.map": "/smarthouse/static/js/main.10a0ef68.js.map",
+    "787.fea5cc7c.chunk.js.map": "/smarthouse/static/js/787.fea5cc7c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.85eefe51.css",
+    "static/js/main.10a0ef68.js"
+  ]
+}
