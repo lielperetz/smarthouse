@@ -1,0 +1,23 @@
+.lvl-btn {
+    text-align: center;
+    background: transparent;
+    border: 2px solid #47c23f;
+    border-radius: 12px;
+    font-size: 20px;
+    padding: 5px;
+    margin: auto;
+    box-sizing: border-box;
+    outline: none;
+    color: black;
+    cursor: pointer;
+    width: 200px;
+}
+
+.lvl-btn:hover {
+    box-shadow: 0 0 30px 0 #47c23f;
+}
+
+h3 {
+    color: #47c23f;
+    font-size: 28px;
+}

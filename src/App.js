@@ -1,53 +1,45 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { useState } from 'react'
-import Home from './Components/Home/Home';
-import Addroom from './Components/Addroom';
-import Room from './Components/Room';
+import AddRoom from './Component/AddRoom';
+import Header from './Component/Header/Header';
+import Home from './Component/Home/Home';
+import RoomDetails from './Component/RoomDetails';
+import { Provider } from './Context';
 
 function App() {
-  const [rooms, setRooms] = useState([])
+  const [rooms, setRooms] = useState([{ roomType: 'Kitchen', roomName: 'A', roomColor: 'red', products: [] }]);
 
-  const addRoom = (name, type, color) => {
-    if (name.length < 1) {
-      return alert('error')
+  const addRoom = (newRoom) => {
+    if (newRoom.roomType === '' || newRoom.roomName.length === 0) {
+      alert('ERROR!!!');
     } else {
-      setRooms([...rooms, { name: name, type: type, color: color, products: [] }])
-
+      setRooms([...rooms, newRoom]);
     }
   }
 
-  const addProduct = (index, typeOfProduct) => {
-    console.log(rooms);
-    let temp = { condition: false, type: typeOfProduct }
-    rooms[index].products.push(temp)
-    setRooms([...rooms])
-    console.log(rooms);
+  const addProduct = (index, productType) => {
+    let temp = { condition: false, type: productType };
+    rooms[index].products.push(temp);
+    setRooms([...rooms]);
   }
   const changeCondition = (indexOfRoom, IndexOfProduct) => {
-    rooms[indexOfRoom].products[IndexOfProduct].condition = !rooms[indexOfRoom].products[IndexOfProduct].condition
+    rooms[indexOfRoom].products[IndexOfProduct].condition = !rooms[indexOfRoom].products[IndexOfProduct].condition;
     setRooms([...rooms])
   }
 
   return (
     <div className="App">
-      <h3>SVCollege Smart House</h3>
-      <h5>Welcome!</h5>
-      <h6>Add a room by clicking on the button</h6>
-
       <BrowserRouter>
-
-        <Routes >
-          <Route path='/' element={<Home rooms={rooms} />} />
-          <Route path='/addroom' element={<Addroom addRoom={addRoom} />} />
-          {rooms.map((val, index) => {
-            return <Route path={`room${val.name}`} element={<Room changeCondition={changeCondition} addProduct={addProduct} index={index} type={val.type} products={val.products} />} />
+        <Header />
+        <Routes>
+          <Route path='/' element={<Provider value={rooms}><Home /></Provider>} />
+          <Route path='/addroom' element={<Provider value={addRoom}><AddRoom /></Provider>} />
+          {rooms.map((room, index) => {
+            return <Route path={`room${room.roomName}`} element={<RoomDetails room={room} index={index} addProduct={addProduct} changeC={changeCondition} />} />
           })}
-
         </Routes>
       </BrowserRouter>
-
-
     </div>
   );
 }
