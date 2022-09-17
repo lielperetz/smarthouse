@@ -24,6 +24,7 @@ export default function AddProduct(props) {
         <div>
             <br />
             <select className='lvl-btn' onChange={(e) => setProduct(e.target.value)}>
+                <option value="">Choose Product</option>
                 <option value="Air conditioner">Air conditioner</option>
                 <option value="Heater">Heater</option>
                 <option value="Stereo system">Stereo system</option>
