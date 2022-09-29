@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import AddRoom from './Component/AddRoom';
 import Header from './Component/Header/Header';
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
           <Route path='/' element={<Provider value={rooms}><Home /></Provider>} />
@@ -39,7 +39,7 @@ function App() {
             return <Route path={`room${room.roomName}`} element={<RoomDetails room={room} index={index} addProduct={addProduct} changeC={changeCondition} />} />
           })}
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
